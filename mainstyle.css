@@ -132,7 +132,6 @@ button{
     box-shadow: #a1a2a2 0 0  0;
     transition: 0ms;
     translate: 0 8px 0;
-  
 }
 
 #settings {
@@ -176,9 +175,11 @@ button{
     width: 50px;
     height: 50px;
     border: 0;
+    background-color: gray;
     position: absolute;
     right: 30px;
-    background-color: aqua;
-    
-  
+}
+
+#mute {
+    transition: 200ms;
 }

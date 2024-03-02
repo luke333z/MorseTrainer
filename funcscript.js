@@ -1,5 +1,26 @@
 let output = "";
 
+let mutePressed = false;
+function muteToggle()
+{
+    mutePressed = !mutePressed;
+    mutePressed ?  document.getElementById('mute').src = "./icons/mute.png" :  document.getElementById('mute').src = "./icons/sound.png";
+}
+
+let hintPressed = false;
+function hintToggle()
+{
+    mutePressed = !mutePressed;
+    mutePressed ?  document.getElementById('hint').src = "./icons/nohints.png" :  document.getElementById('hint').src = "./icons/hints.png";
+}
+
+let modePressed = false;
+function modeToggle()
+{
+    mutePressed = !mutePressed;
+    mutePressed ?  document.getElementById('mode').src = "./icons/wordmode.png" :  document.getElementById('mode').src = "./icons/lettermode.png";
+}    
+
 
 const letterList = [
     { letter: 'a', ascii: 97, morse: ".-"},
@@ -28,7 +49,7 @@ const letterList = [
     { letter: 'x', ascii: 120, morse: "-..-"},
     { letter: 'y', ascii: 121, morse: "-.--"},
     { letter: 'z', ascii: 122, morse: "--.."}
-];
+];    
 
 
 function translate(word)
@@ -37,10 +58,10 @@ function translate(word)
     let translated = "";
     letterArray.forEach(element => {
         for(var i = 0; i < letterList.length; i++)
-            if(letterList[i].letter == element)
-                translated+=letterList[i].morse;
-    });
-    return translated;
+        if(letterList[i].letter == element)
+        translated+=letterList[i].morse;    
+});    
+return translated;
 }
 
 
@@ -49,50 +70,56 @@ function reverseTranslate(morse)
     let found = false;
     let translated = "";
     for(var i = 0; i < letterList.length; i++)
-            if(letterList[i].morse == morse)
-                translated=letterList[i].letter, found=true;
-    if(found)
-        return translated;
-    else 
-    { 
-        document.getElementById("output").style.paddingLeft =  "40px";
+    if(letterList[i].morse == morse)
+    translated=letterList[i].letter, found=true;    
+if(found)
+return translated;
+else 
+{ 
+    document.getElementById("output").style.paddingLeft =  "40px";
+    setTimeout(() => {
+        document.getElementById("output").style.paddingLeft =  "0px";     
+        setTimeout(() => {
+            document.getElementById("output").style.paddingLeft =  "40px"; 
             setTimeout(() => {
-                document.getElementById("output").style.paddingLeft =  "0px";     
-                setTimeout(() => {
-                    document.getElementById("output").style.paddingLeft =  "40px"; 
-                    setTimeout(() => {
-                        document.getElementById("output").style.paddingLeft =  "0px";   
-                    }, 100);    
-                }, 100);
-            }, 100);          
-        return output;
-    }
+                document.getElementById("output").style.paddingLeft =  "0px";   
+            }, 100);        
+        }, 100);    
+    }, 100);              
+    return output;
+}    
 }
 
 
 function refreshOutput()
 {
     document.getElementById("output").innerHTML = output;
-}
+}    
 
 
 function clearOutput()
 {
     output = "";
     refreshOutput();
-}
+}    
 
 
 document.onkeydown = function(e){
     e = e || window;
     var key = e.which || e.keyCode;
     if(key===74) // j
-    dot();
+    {
+        dot();
+      
+    }   
     else if(key===75) // k
-    dash();
+    {
+        dash();
+       
+    }
     else if(key===67) // c
-    clearOutput();
-}
+        clearOutput();
+}    
 
 
 let interval;
@@ -108,25 +135,51 @@ function resetInterval()
         setTimeout(() => {
             clearOutput();
             blockInput = false;
-        }, 1000);
+        }, 1000);    
         window.clearInterval(interval);
-    }, 3000);
-}
+    }, 3000);    
+}    
 
+let dashSnd  = new Audio('dash.wav'), dotSnd  = new Audio('dot.wav');
+dashSnd.volume = 0.7;
+dotSnd.volume = 0.7;
 
 function dot()
 {
+    
     if(output.length<70 && !blockInput)
-        output+="."
+    {
+        if(!mutePressed){
+            dotSnd.pause();
+            dashSnd.pause();
+            dotSnd = new Audio('dot.wav');
+            dotSnd.volume = 0.7;
+            dotSnd.play();
+        }    
+        output+=".";
+    }    
     refreshOutput();
     resetInterval();
-}
+}    
 
 
 function dash()
 {
+    
     if(output.length<70 && !blockInput)
-        output+="-"
+    {
+        if(!mutePressed){
+            dashSnd.pause();
+            dotSnd.pause();
+            dashSnd = new Audio('dash.wav');
+            dashSnd.volume = 0.7;
+            dashSnd.play();
+        }    
+        output+="-";
+    }    
     refreshOutput();
     resetInterval();
-}
+}    
+
+
+

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-    
+
 <head>
     <title>MorseTrainer</title>
     <link rel="stylesheet" type="text/css" href="./mainstyle.css">
@@ -13,16 +13,16 @@
         <div id = "output"></div>
         <div id = "button-box">
             <div class = "dot">
-                <button id = "dot" onclick="dot();"></button>
+                <button id = "dot" onclick="dot();"><img src="./icons/dot.png"></button>
             </div>
             <div class = "dash">
-                <button id = "dash" onclick="dash   ();"></button>
+                <button id = "dash" onclick="dash();"><img src="./icons/dash.png"></button>
             </div>
             <div id="settings">
-                <div class="settings-box"><div id="text">Mute</div><button id="button"></button></div>
-                <div class="settings-box"><div id="text">Hints</div><button id="button"></button></div>
-                <div class="settings-box"><div id="text">Mode</div><button id="button"></button></div>
-                <div class="settings-box"><div id="text">Contact</div><button id="button"></button></div>
+                <div class="settings-box"><div id="text">Mute</div><button id="button" onclick="muteToggle();"><img id="mute" src="./icons/sound.png"></button></div>
+                <div class="settings-box"><div id="text">Hints</div><button id="button" onclick="hintToggle();"><img id="hint" src="./icons/hints.png"></button></div>
+                <div class="settings-box"><div id="text">Mode</div><button id="button" onclick="modeToggle();"><img id="mode" src="./icons/lettermode.png"></button></div>
+                <div class="settings-box"><div id="text">Contact</div><button id="button" ><a href="https://github.com/luke333z/"><img src="./icons/github.png"></a></button></div>
             </div>
         </div>
     </div>

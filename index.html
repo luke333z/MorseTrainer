@@ -8,21 +8,32 @@
 </head>
 
 <body>
-    <div id = "display"></div>
+    <div id = "hint"></div>
+   
+    <div id="display"> 
+        <div id="content0">WORD 1</div>
+        <div id="content1">WORD 2</div>
+    </div>
+
+  
+        
+        
+    
     <div id = "hotbar">
         <div id = "output"></div>
+
         <div id = "button-box">
             <div class = "dot">
-                <button id = "dot" onclick="dot();"><img src="./icons/dot.png"></button>
+                <button id = "dot" onclick="dot();"><img draggable="false" src="./icons/dot.png"></button>
             </div>
             <div class = "dash">
-                <button id = "dash" onclick="dash();"><img src="./icons/dash.png"></button>
+                <button id = "dash" onclick=" dash();"><img draggable="false" src="./icons/dash.png"></button>
             </div>
             <div id="settings">
-                <div class="settings-box"><div id="text">Mute</div><button id="button" onclick="muteToggle();"><img id="mute" src="./icons/sound.png"></button></div>
-                <div class="settings-box"><div id="text">Hints</div><button id="button" onclick="hintToggle();"><img id="hint" src="./icons/hints.png"></button></div>
-                <div class="settings-box"><div id="text">Mode</div><button id="button" onclick="modeToggle();"><img id="mode" src="./icons/lettermode.png"></button></div>
-                <div class="settings-box"><div id="text">Contact</div><button id="button" ><a href="https://github.com/luke333z/"><img src="./icons/github.png"></a></button></div>
+                <div class="settings-box"><div id="text">Mute</div><button id="button" onclick="muteToggle();"><img draggable="false" id="mute" src="./icons/sound.png"></button></div>
+                <div class="settings-box"><div id="text">Hints</div><button id="button" onclick="hintToggle();"><img draggable="false" id="hints" src="./icons/hints.png"></button></div>
+                <div class="settings-box"><div id="text">Mode</div><button id="button" onclick="modeToggle();"><img draggable="false" id="mode" src="./icons/wordmode.png"></button></div>
+                <div class="settings-box"><div id="text">Contact</div><button id="button" ><a href="https://github.com/luke333z/"><img draggable="false" src="./icons/github.png"></a></button></div>
             </div>
         </div>
     </div>

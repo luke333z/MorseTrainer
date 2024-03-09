@@ -2,12 +2,9 @@ html, body {
     margin: 0; height: 100%; 
     font-family: "Poppins","Helvetica","Arial",sans-serif;
     font-weight: 800;
-    overflow: hidden;
-}
-
-#display {
-    height: 70vh;
-    background-color: #373737;
+    overflow:hidden;
+    display: flex;
+    position: absolute;
 }
 
 #hotbar {
@@ -21,11 +18,11 @@ html, body {
     left: 0;
     position: fixed;
     width: 100%;
-
+    
 }
 
 #output {
-    background-color: rgb(130, 0, 223);
+    background-color: #8200df;
     appearance: none;
     border: 0;
     bottom: 25vh;
@@ -146,7 +143,7 @@ button{
 .settings-box{
     width: 85%;
     height: 50px;
-   
+    
     margin: 15px;
     display: flex;
     flex-direction: row;
@@ -180,6 +177,50 @@ button{
     right: 30px;
 }
 
-#mute {
+#mute, #hints, #mode {
     transition: 200ms;
 }
+
+
+
+
+#content0, #content1{
+    text-align: center;
+    font-size: 104px;
+    color:white;
+    position:absolute;
+    letter-spacing: 50px;
+    transition: 500ms;
+}
+
+
+#display {
+    
+    background-color:#212121;
+    height: 70vh;
+    width: 100vw;
+}
+
+#content0 {
+    top:200px;
+    left: 86px;
+}
+#content1 {
+    top:1200px;
+    left: 86px;
+}
+
+
+
+body > #hint{
+    width: 150px;
+    height: 50px;
+    position:absolute;
+    top:370px;
+    left: 50px;
+    font-size: 18px;
+    text-align: center;
+    color:black
+    
+}
+

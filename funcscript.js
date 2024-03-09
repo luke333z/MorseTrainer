@@ -167,6 +167,8 @@ const wordArray = ["people","history","way","art","world","information","map","t
 
 
 let output = "";
+let COUNTER = 0;
+let blockInput = false;
 function refreshOutput()
 {
     document.getElementById("output").innerHTML = output;
@@ -204,11 +206,21 @@ function modeToggle()
 {
     wordMode = !wordMode;
     wordMode ?  document.getElementById('mode').src = "./icons/wordmode.png" :  document.getElementById('mode').src = "./icons/lettermode.png";
+    if(!wordMode)
+    {
+        blockInput = true;
+        document.getElementById("display").style.backgroundColor = "#ff0000";
+        COUNTER % 2 ==0 ?  contentID = "content0" : contentID = "content1";
+        document.getElementById(contentID).innerHTML = "WORK IN PROGRESS PLEASE REFRESH PAGE";
+    }
 }    
 //settings
 //letters and word translations
 
-
+function updateScore(cnt)
+{
+    document.getElementById("score").innerHTML = `SCORE: ${cnt}`;
+}
 
 function shake()
 {
@@ -241,7 +253,6 @@ function translate(letter)
     }
     
 
-let COUNTER = 0;
 let currentWord = "HELLO";
 function swapWords()
 {
@@ -269,13 +280,14 @@ function swapWords()
         con1.style.display = "block";
     }, 300);
     COUNTER++;
-    console.log(currentWord);
+    updateScore(COUNTER);
 }
 
 function showHint()
 {
-
+    
 }
+
 
 function wmVerify()
 {
@@ -288,14 +300,13 @@ function wmVerify()
     let mVerif = output.split(" / ");
     letterArray.forEach(letter => {
         let morse = translate(letter);
-        console.log(morse, mVerif, morse.length, letter, index)
         if(morse == mVerif[index])
         {
-            output2+=letter;
+            output2+=`<span id = "right${index}" style="transition: 300ms;">${letter}</span>`
         }
         else
         {
-            output2+=`<span id = "div${index}" style="transition: 300ms;">${letter}</span>`
+            output2+=`<span id = "wrong${index}" style="transition: 300ms;">${letter}</span>`
             mistake = true;
         }
         index++;
@@ -307,18 +318,23 @@ function wmVerify()
         setTimeout(() => {
             for(let i = 0; i < index; i++)
             {
-                if(document.getElementById(`div${i}`))
-                    document.getElementById(`div${i}`).style.color="#ff0000";
+                if(document.getElementById(`wrong${i}`))
+                    document.getElementById(`wrong${i}`).style.color="#ff0000";
+                if(document.getElementById(`right${i}`))
+                    document.getElementById(`right${i}`).style.color="#00ff00";
             }
         }, 200);
+
         shake();
         showHint();
         
         setTimeout(() => {
             for(let i = 0; i < index; i++)
             {
-                if(document.getElementById(`div${i}`))
-                    document.getElementById(`div${i}`).style.color="#ffffff";
+                if(document.getElementById(`wrong${i}`))
+                    document.getElementById(`wrong${i}`).style.color="#ffffff";
+                if(document.getElementById(`right${i}`))
+                    document.getElementById(`right${i}`).style.color="#ffffff";
                 
             }
             setTimeout(() => {
@@ -329,7 +345,10 @@ function wmVerify()
     }
     else
     {
-        swapWords();
+        document.getElementById(contentID).style.color = "#00ff00";
+        setTimeout(() => {
+            swapWords();
+        }, 1000);
     }
     
 }
@@ -351,13 +370,13 @@ function wmVerify()
 
 
 let interval;
-let blockInput = false;
 function resetInterval()
 {   
     window.clearInterval(interval);
     interval = window.setInterval(function() {  //until time runs out do nothing
        //then do this
-        wmVerify();
+        if(wordMode)
+            wmVerify();
         window.clearInterval(interval);
     }, 2000);    
 }    

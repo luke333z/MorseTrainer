@@ -274,6 +274,7 @@ function swapWords()
     setTimeout(() => {
         con1.style.display = "none";
         con1.style.top = "1200px";
+        con1.style.color = "#ffffff"
         con1.innerHTML = getRandomWord();
     }, 100);
     setTimeout(() => {
@@ -380,22 +381,38 @@ function resetInterval()
         window.clearInterval(interval);
     }, 2000);    
 }    
-
- 
+let started = false;
+function startUp()
+{
+    started = true;
+    currentWord = getRandomWord();
+    document.getElementById("content0").innerHTML = currentWord;
+    document.getElementById("content1").innerHTML = getRandomWord();
+    document.getElementById("loading").style.translate = "0 2000px";
+}
 
 //key handler
 document.onkeydown = function(e){
     e = e || window;
     var key = e.which || e.keyCode;
-    if(key===74) // j
-        dot(); 
-    else if(key===75) // k
-        dash();
-    else if (key === 72)//h
-        space();
-    else if(key===67) // c
-        swapWords();
+    if(started)
+    {
+        if(key===74) // j
+            dot(); 
+        else if(key===75) // k
+            dash();
+        else if (key === 72)//h
+            space();
+        else if(key===67) // c
+            swapWords();
+    }
+    else
+        startUp();
 }    
+document.onmousedown = function(e){
+    if(!started)
+        startUp();
+}
 
 
 let dashSnd  = new Audio('dash.wav'), dotSnd  = new Audio('dot.wav');

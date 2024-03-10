@@ -22,7 +22,7 @@ html, body {
     bottom: 0;
     display:flex;
     flex-direction: column;
-    height: 30vh;
+    height: 370px;
     min-height: 227px;
     left: 0;
     position: fixed;
@@ -59,9 +59,9 @@ html, body {
     border: 0;
     bottom: 25vh;
     color: #ffffff;
-    font-size: 4vh;
+    font-size: 42px;
     font-weight: 700;
-    height  : 8vh;
+    height  : 95px;
     padding: 5px 0 0;
     text-align: center;
     text-transform: uppercase;
@@ -149,7 +149,48 @@ button{
     border-image: initial;
 }
 
+#drawer {
+    width: 20vw;
+    height: 310px;
+    top:65px;
+    position:absolute;
+    color:#ffffff;
+    font-size: 18px;
+    padding: 15px;
+    padding-top: 80px;
+    min-width: 380px;
+    transition: 500ms;
+}
 
+#handle {
+    width: 50px;
+    background-color: #8787878d;
+    height: 210px;
+    top:0px;
+    position:absolute;
+    left:max(23vw,430px);
+    margin-top: 120px;
+    border-radius: 10px;
+    transition: 500ms;
+    border: none;
+}
+
+#handleIcn {
+    margin:0;
+    position: absolute;
+    align-items: center;
+    top:80px;
+    left:0px;
+}
+
+#handle:hover{
+    scale:105%;
+}
+
+#handle:active{
+    transition: 0ms;
+    scale:100%;
+}
 
 #dash:hover, #dot:hover{
     background: #016bb2;
@@ -167,15 +208,15 @@ button{
     height: 70%;
     width: 15%;
     max-width: 300px;
+    min-width: 250px;
     position:absolute;
     right: 10px;
-    top: 7vh;
+    top: 90px;
 }
 
 .settings-box{
     width: 85%;
     height: 50px;
-    
     margin: 15px;
     display: flex;
     flex-direction: row;
@@ -193,10 +234,11 @@ button{
 
 .settings-box #text {
     text-align: right;
-    font-size: 2.5vh;
+    font-size: 20px;
     color: white;
     position:absolute;
     padding-right: 10px;
+    padding-top: 10px;
     width: 60%;
 }
 
@@ -204,7 +246,7 @@ button{
     width: 50px;
     height: 50px;
     border: 0;
-    background-color: #1e1e1e;
+    background-color: transparent;
     position: absolute;
     right: 30px;
 }
@@ -229,7 +271,7 @@ button{
 #display {
     position: relative;
     background-color:#1e1e1e;
-    height: 70vh;
+    height: 77vh;
     width: 100vw;
 }
 

@@ -162,8 +162,9 @@ const wordArray = ["people","history","way","art","world","information","map","t
 "invite","kiss","neat","pop","punch","quit","reply","representative","resist","rip","rub","silly","smile",
 "spell","stretch","stupid","tear","temporary","tomorrow","wake","wrap","yesterday"];
 
+const wmDesc = `In "Word Mode," players decode entire words, emphasizing complete word recognition, making it a harder gamemode. Make sure you insert spaces between each letter for a good translation.`;
 
-
+const lmDesc = `In "Letter Mode," players decode words letter by letter, being beginner friendly. `;
 
 
 let output = "";
@@ -206,6 +207,7 @@ function modeToggle()
 {
     wordMode = !wordMode;
     wordMode ?  document.getElementById('mode').src = "./icons/wordmode.png" :  document.getElementById('mode').src = "./icons/lettermode.png";
+    document.getElementById("drawer").innerHTML = wordMode ? wmDesc : lmDesc;
     if(!wordMode)
     {
         blockInput = true;
@@ -292,6 +294,7 @@ function showHint()
 
 function wmVerify()
 {
+    if (!wordMode) return;
     let contentID;
     COUNTER % 2 ==0 ?  contentID = "content0" : contentID = "content1";
     blockInput = true;
@@ -354,6 +357,17 @@ function wmVerify()
     
 }
 
+// short description of how wordmode works with close button bottom left 
+/*
+
+
+
+
+*/
+// should work kinda like a drawer
+//hints
+//keybinds top right
+//
 
 
 
@@ -363,9 +377,23 @@ function wmVerify()
 
 
 
-
-
-
+let drawer = true;
+function toggleDrawer()
+{
+    drawer = !drawer;
+    if(drawer)
+    {
+        document.getElementById('handleIcn').src = "./icons/arrowLeft.png" ;
+        document.getElementById("drawer").style.translate = "0px";
+        document.getElementById("handle").style.left = "max(23vw,430px)";
+    }
+    else
+    {
+        document.getElementById('handleIcn').src = "./icons/arrowRight.png";
+        document.getElementById("drawer").style.translate = "-800px";
+        document.getElementById("handle").style.left = "-20px"
+    }
+}
 
 
 
@@ -389,6 +417,8 @@ function startUp()
     document.getElementById("content0").innerHTML = currentWord;
     document.getElementById("content1").innerHTML = getRandomWord();
     document.getElementById("loading").style.translate = "0 2000px";
+    document.getElementById("drawer").innerHTML = wordMode ? wmDesc : lmDesc;
+
 }
 
 //key handler

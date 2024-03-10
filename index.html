@@ -11,34 +11,36 @@
     <div id = "loading">Morse Trainer
         <div id = subtext>Press any key to Start</div>
     </div>
-    <div id = "hint"></div>
+   
    
     <div id="display"> 
         <div id="content0">HELLO</div>
         <div id="content1">WORLD</div>
-        <div id = "score">SCORE: 0</div>
+        <div id = "hint"></div>
+        <div id = "keybinds">
+            <div class="keybinds-box"><div id="text">Dot</div><button id="button" tabindex="-1" onclick="changeDot();"><img draggable="false" id="dotKey" src="./icons/blankKey.png"></button></div>
+            <div class="keybinds-box"><div id="text">Dash</div><button id="button" tabindex="-1" onclick="changeKey(1);"><img draggable="false" id="dashKey" src="./icons/blankKey.png"></button></div>
+            <div class="keybinds-box"><div id="text">Space</div><button id="button" tabindex="-1" onclick="changeKey(2);"><img draggable="false" id="spaceKey" src="./icons/blankKey.png"></button></div>
+        </div>
     </div>
 
-  
-        
-        
-    
     <div id = "hotbar">
+        <div id = "score">SCORE: 0</div>
         <div id = "output"></div>
         <div id = "drawer"></div>
-        <button id = "handle" onclick="toggleDrawer();"><img draggable="false" id="handleIcn" src="./icons/arrowLeft.png"></button>
+        <button id = "handle" onclick="toggleDrawer();" tabindex="-1"><img draggable="false" id="handleIcn" src="./icons/arrowLeft.png"></button>
         <div id = "button-box">
             <div class = "dot">
-                <button id = "dot" onclick="dot();"><img draggable="false" src="./icons/dot.png"></button>
+                <button id = "dot" tabindex="-1" onclick="dot();"><img draggable="false" src="./icons/dot.png"></button>
             </div>
             <div class = "dash">
-                <button id = "dash" onclick=" dash();"><img draggable="false" src="./icons/dash.png"></button>
+                <button id = "dash" tabindex="-1" onclick=" dash();"><img draggable="false" src="./icons/dash.png"></button>
             </div>
             <div id="settings">
-                <div class="settings-box"><div id="text">Mute</div><button id="button" onclick="muteToggle();"><img draggable="false" id="mute" src="./icons/sound.png"></button></div>
-                <div class="settings-box"><div id="text">Hints</div><button id="button" onclick="hintToggle();"><img draggable="false" id="hints" src="./icons/hints.png"></button></div>
-                <div class="settings-box"><div id="text">Mode</div><button id="button" onclick="modeToggle();"><img draggable="false" id="mode" src="./icons/wordmode.png"></button></div>
-                <div class="settings-box"><div id="text">Contact</div><button id="button" ><a href="https://github.com/luke333z/"><img draggable="false" src="./icons/github.png"></a></button></div>
+                <div class="settings-box"><div id="text">Mute</div><button id="button" tabindex="-1" onclick="muteToggle();"><img draggable="false" id="mute" src="./icons/sound.png"></button></div>
+                <div class="settings-box"><div id="text">Hints</div><button id="button" tabindex="-1" onclick="hintToggle();"><img draggable="false" id="hints" src="./icons/hints.png"></button></div>
+                <div class="settings-box"><div id="text">Mode</div><button id="button" tabindex="-1" onclick="modeToggle();"><img draggable="false" id="mode" src="./icons/wordmode.png"></button></div>
+                <div class="settings-box"><div id="text">Contact</div><button id="button" tabindex="-1" ><a tabindex="-1" href="https://github.com/luke333z/"><img draggable="false" src="./icons/github.png"></a></button></div>
             </div>
         </div>
     </div>

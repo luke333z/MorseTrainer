@@ -7,6 +7,14 @@
     }
   }
 
+@keyframes pulseKey {
+    0%, 100% {
+      scale: 90%;
+    }
+    50% {
+      scale: 100%;
+    }
+  }
 html, body {
     margin: 0; height: 100%; 
     font-family: "Poppins","Helvetica","Arial",sans-serif;
@@ -14,6 +22,7 @@ html, body {
     overflow:hidden;
     display: flex;
     position: absolute;
+    user-select: none;
 }
 
 #hotbar {
@@ -32,10 +41,48 @@ html, body {
 
 #score {
     position:absolute;
-    bottom: 10px;
-    left: 5px;
+    bottom: 380px;
+    left: 15px;
     color:#ffffff;
 }
+
+#keybinds
+{
+    height: 220px;
+    width: 260px;
+
+    position:absolute;
+    right:0px;
+}
+.keybinds-box{
+    width: 85%;
+    height: 50px;
+    margin: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.keybinds-box #text {
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    position:absolute;
+    padding-right: 10px;
+    padding-top: 10px;
+    width: 60%;
+}
+
+.keybinds-box #button {
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    right: 30px;
+}
+
+
+
 #loading {
     z-index: 1;
     background-color: #007acc;
@@ -222,16 +269,6 @@ button{
     flex-direction: row;
 }
 
-.settings-box #button:hover{
-    scale: 110%;
-    transition: 500ms;
-}
-
-.settings-box #button:active{
-    transition: 0ms;
-    scale: 105%;
-}
-
 .settings-box #text {
     text-align: right;
     font-size: 20px;
@@ -241,6 +278,16 @@ button{
     padding-top: 10px;
     width: 60%;
 }
+.settings-box #button:hover, .keybinds-box #button:hover{
+    scale: 110%;
+    transition: 500ms;
+}
+
+.settings-box #button:active, .keybinds-box #button:active{
+    transition: 0ms;
+    scale: 105%;
+}
+
 
 .settings-box #button {
     width: 50px;

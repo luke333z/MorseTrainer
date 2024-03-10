@@ -166,7 +166,7 @@ const wmDesc = `In "Word Mode," players decode entire words, emphasizing complet
 
 const lmDesc = `In "Letter Mode," players decode words letter by letter, being beginner friendly. `;
 
-
+const validKeys = ['0','1','2','3','4','5','6','7','8','9','-','=','/','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
 let output = "";
 let COUNTER = 0;
 let blockInput = false;
@@ -357,14 +357,6 @@ function wmVerify()
     
 }
 
-// short description of how wordmode works with close button bottom left 
-/*
-
-
-
-
-*/
-// should work kinda like a drawer
 //hints
 //keybinds top right
 //
@@ -422,16 +414,62 @@ function startUp()
 }
 
 //key handler
+let key;
+function waitKey() {
+    return new Promise((resolve) => {
+      document.addEventListener('keydown', onKeyHandler);
+      function onKeyHandler(e) {
+        if (e.key && key != dashKey && key != spaceKey && validKeys.includes(key)) {
+          document.removeEventListener('keydown', onKeyHandler);
+          key = e.key;
+          resolve();
+          
+        }
+      }
+    });
+  }
+
+async function changeDot()
+{
+    blockInput = true;
+    let con = document.getElementById("dotKey"); 
+    con.src="./icons/blankKey.png";
+    con.style.animation = "pulseKey 700ms infinite";
+    await waitKey();
+    while(key == dashKey || key == spaceKey || !validKeys.includes(key))
+    {
+        con.src="./icons/invalidKey.png";
+        setTimeout(() => {
+            con.src="./icons/blankKey.png";
+        }, 1000);
+        await waitKey();
+    }
+    dotKey = key;
+    con.style.animation = "";
+    if(key == '/')
+        con.src = "./icons/keys/keyslash.png";
+    else if (key == '<')
+        con.src = "./icons/keys/keyleft.png";
+    else if (key == '>')
+        con.src = "./icons/keys/keyright.png";
+    else
+        con.src = `./icons/keys/key${key}.png`;
+        
+
+    blockInput = false;
+}
+
+let dotKey = 'j', dashKey = 'k', spaceKey = 'h';
 document.onkeydown = function(e){
     e = e || window;
-    var key = e.which || e.keyCode;
+    var key = e.key;
     if(started)
     {
-        if(key===74) // j
+        if(key==dotKey) // j
             dot(); 
-        else if(key===75) // k
+        else if(key==dashKey) // k
             dash();
-        else if (key === 72)//h
+        else if (key ==spaceKey)//h
             space();
         else if(key===67) // c
             swapWords();

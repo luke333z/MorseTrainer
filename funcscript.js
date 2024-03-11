@@ -428,7 +428,8 @@ function startUp()
     document.getElementById("drawer").innerHTML = wordMode ? wmDesc : lmDesc;
     if(isMobile())
     {
-        document.getElementById("keybinds").style.display = "none"; 
+        document.getElementById("keybinds").style.display = "none";
+        document.getElementById("space").style.display = "inherit";  
         document.getElementById("drawer").style.top = "-400px"; 
         document.getElementById("handle").style.top = "-465px";  
     }

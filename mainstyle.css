@@ -143,6 +143,29 @@ html, body {
     flex-grow: 1;
     flex-basis: 100%;
 }
+.space{
+    position: absolute;
+    height: 233px;
+    bottom: 25px;
+    left: 40px;
+   
+}
+
+#space{
+    appearance: none;
+    align-items: center;
+    background: #007acc;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: #085488 0 8px 0;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    font-size: 7vh;
+    outline: 0;
+    width: 100%;
+    display: none;
+}
 
 #dot{
     appearance: none;
@@ -251,12 +274,12 @@ button{
     scale:100%;
 }
 
-#dash:hover, #dot:hover{
+#dash:hover, #dot:hover, #space:hover{
     background: #016bb2;
     transition: 500ms;
 }
 
-#dash:active, #dot:active{
+#dash:active, #dot:active, #space:active{
     background: #00558e;
     box-shadow: #085488 0 0  0;
     transition: 0ms;

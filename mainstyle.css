@@ -196,6 +196,17 @@ button{
     border-image: initial;
 }
 
+#hint{
+    text-align: center;
+    font-size: 25px;
+    color:#ffffff00;
+    position:absolute;
+    letter-spacing: 10px;
+    transition: 500ms;
+    top: 370px;
+    left: 100px;
+}
+
 #drawer {
     width: 20vw;
     height: 310px;
@@ -288,7 +299,6 @@ button{
     scale: 105%;
 }
 
-
 .settings-box #button {
     width: 50px;
     height: 50px;
@@ -302,9 +312,6 @@ button{
     transition: 200ms;
 }
 
-
-
-
 #content0, #content1{
     text-align: center;
     font-size: 104px;
@@ -313,7 +320,6 @@ button{
     letter-spacing: 50px;
     transition: 500ms;
 }
-
 
 #display {
     position: relative;
@@ -330,8 +336,6 @@ button{
     top:1200px;
     left: 86px;
 }
-
-
 
 body > #hint{
     width: 150px;

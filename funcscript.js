@@ -186,6 +186,10 @@ function clearOutput()
     }, 1000);
 }    
 
+function updateScore(cnt)
+{
+    document.getElementById("score").innerHTML = `SCORE: ${cnt}`;
+}
 //settings
 let mute = false;
 function muteToggle()
@@ -219,10 +223,6 @@ function modeToggle()
 //settings
 //letters and word translations
 
-function updateScore(cnt)
-{
-    document.getElementById("score").innerHTML = `SCORE: ${cnt}`;
-}
 
 function shake()
 {
@@ -244,6 +244,8 @@ function getRandomWord()
     return wordArray[Math.floor(Math.random()*wordArray.length)].toLocaleUpperCase();
 }
 
+let currentWord = "";
+
 function translate(letter)
 {
     let translated = "";
@@ -251,11 +253,24 @@ function translate(letter)
         if(letterList[i].letter == letter)
             translated=letterList[i].morse;   
     
-        return translated;
-    }
+    return translated;
+}
+
+function computeHint(word)
+{
+    word = word.split("");
+    console.log(word);
+    let hint = "";
+    for(var i = 0; i < word.length; i++)
+        for(var j = 0; j < letterList.length; j++)
+            if(letterList[j].letter == word[i])
+                hint= hint + letterList[j].morse + " / ";   
+    hint = hint.substring(0,hint.length-2);
+    
+    document.getElementById("hint").innerHTML = hint;
+}
     
 
-let currentWord = "HELLO";
 function swapWords()
 {
     let con1,con2;
@@ -273,6 +288,7 @@ function swapWords()
     currentWord = con2.innerHTML;
     con1.style.top = "-1000px";
     con2.style.top = "200px";
+    document.getElementById("hint").style.color = "#ffffff00";
     setTimeout(() => {
         con1.style.display = "none";
         con1.style.top = "1200px";
@@ -288,7 +304,8 @@ function swapWords()
 
 function showHint()
 {
-    
+    computeHint(currentWord);
+    document.getElementById("hint").style.color = "#ffffffaa";
 }
 
 
@@ -410,7 +427,7 @@ function startUp()
     document.getElementById("content1").innerHTML = getRandomWord();
     document.getElementById("loading").style.translate = "0 2000px";
     document.getElementById("drawer").innerHTML = wordMode ? wmDesc : lmDesc;
-
+    computeHint(currentWord);
 }
 
 //key handler

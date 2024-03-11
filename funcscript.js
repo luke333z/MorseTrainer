@@ -221,9 +221,8 @@ function modeToggle()
     }
 }    
 //settings
+
 //letters and word translations
-
-
 function shake()
 {
     let output = document.getElementById("output")
@@ -259,7 +258,7 @@ function translate(letter)
 function computeHint(word)
 {
     word = word.split("");
-    console.log(word);
+    
     let hint = "";
     for(var i = 0; i < word.length; i++)
         for(var j = 0; j < letterList.length; j++)
@@ -374,18 +373,6 @@ function wmVerify()
     
 }
 
-//hints
-//keybinds top right
-//
-
-
-
-
-
-
-
-
-
 let drawer = true;
 function toggleDrawer()
 {
@@ -411,8 +398,7 @@ let interval;
 function resetInterval()
 {   
     window.clearInterval(interval);
-    interval = window.setInterval(function() {  //until time runs out do nothing
-       //then do this
+    interval = window.setInterval(function() {  
         if(wordMode)
             wmVerify();
         window.clearInterval(interval);
@@ -427,7 +413,6 @@ function startUp()
     document.getElementById("content1").innerHTML = getRandomWord();
     document.getElementById("loading").style.translate = "0 2000px";
     document.getElementById("drawer").innerHTML = wordMode ? wmDesc : lmDesc;
-    computeHint(currentWord);
 }
 
 //key handler

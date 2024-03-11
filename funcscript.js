@@ -222,9 +222,11 @@ function modeToggle()
     if(!wordMode)
     {
         blockInput = true;
-        document.getElementById("display").style.backgroundColor = "#ff0000";
-        COUNTER % 2 ==0 ?  contentID = "content0" : contentID = "content1";
-        document.getElementById(contentID).innerHTML = "WORK IN PROGRESS PLEASE REFRESH PAGE";
+        document.getElementById("loading").style.backgroundColor = "#ff0000";
+        document.getElementById("loading").innerHTML = "WORK IN PROGRESS PLEASE REFRESH PAGE";
+        document.getElementById("loading").style.translate = "0 0";
+        if(isMobile())
+        document.getElementById("loading").style.fontSize = "80px";
     }
 }    
 //settings
@@ -428,10 +430,8 @@ function startUp()
     document.getElementById("drawer").innerHTML = wordMode ? wmDesc : lmDesc;
     if(isMobile())
     {
+        document.getElementById("space").style.left = "40px";  
         document.getElementById("keybinds").style.display = "none";
-        document.getElementById("space").style.display = "inherit";  
-        document.getElementById("drawer").style.top = "-400px"; 
-        document.getElementById("handle").style.top = "-465px";  
     }
 }
 

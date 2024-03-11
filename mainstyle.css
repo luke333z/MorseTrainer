@@ -24,6 +24,7 @@ html, body {
     position: absolute;
     user-select: none;
     background-color: #1e1e1e;
+    touch-action: none;
 }
 
 #hotbar {
@@ -143,28 +144,24 @@ html, body {
     flex-grow: 1;
     flex-basis: 100%;
 }
-.space{
+#space{
     position: absolute;
     height: 233px;
+    width: 100px;
     bottom: 25px;
-    left: 40px;
+    left: 20vw;
    
 }
 
-#space{
+.space{
     appearance: none;
-    align-items: center;
     background: #007acc;
     border: 0;
     border-radius: 10px;
     box-shadow: #085488 0 8px 0;
-    display: flex;
-    justify-content: center;
     height: 100%;
-    font-size: 7vh;
     outline: 0;
     width: 100%;
-    display: none;
 }
 
 #dot{
@@ -234,7 +231,7 @@ button{
 #drawer {
     width: 20vw;
     height: 310px;
-    top:65px;
+    top:-400px;
     position:absolute;
     color:#ffffff;
     font-size: 18px;
@@ -248,7 +245,7 @@ button{
     width: 50px;
     background-color: #8787878d;
     height: 210px;
-    top:0px;
+    top:-465px;
     position:absolute;
     left:max(23vw,430px);
     margin-top: 120px;
@@ -274,12 +271,12 @@ button{
     scale:100%;
 }
 
-#dash:hover, #dot:hover, #space:hover{
+#dash:hover, #dot:hover, .space:hover{
     background: #016bb2;
     transition: 500ms;
 }
 
-#dash:active, #dot:active, #space:active{
+#dash:active, #dot:active, .space:active{
     background: #00558e;
     box-shadow: #085488 0 0  0;
     transition: 0ms;

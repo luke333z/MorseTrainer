@@ -23,6 +23,7 @@ html, body {
     display: flex;
     position: absolute;
     user-select: none;
+    background-color: #1e1e1e;
 }
 
 #hotbar {

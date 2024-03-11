@@ -290,7 +290,7 @@ function swapWords()
     document.getElementById("hint").style.color = "#ffffff00";
     setTimeout(() => {
         con1.style.display = "none";
-        con1.style.top = "1200px";
+        con1.style.top = "2200px";
         con1.style.color = "#ffffff"
         con1.innerHTML = getRandomWord();
     }, 100);

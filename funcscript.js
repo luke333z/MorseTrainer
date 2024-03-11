@@ -432,6 +432,10 @@ function startUp()
     {
         document.getElementById("space").style.left = "40px";  
         document.getElementById("keybinds").style.display = "none";
+        document.getElementById("muteDiv").style.display = "none";
+        document.getElementById("settings").style.top = "120px";  
+        document.getElementById("score").style.fontSize = "30px";  
+        mute = true;
     }
 }
 

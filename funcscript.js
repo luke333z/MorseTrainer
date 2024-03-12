@@ -177,6 +177,9 @@ function isMobile() {
 let output = "";
 let COUNTER = 0;
 let blockInput = false;
+
+
+//output
 function refreshOutput()
 {
     document.getElementById("output").innerHTML = output;
@@ -197,7 +200,9 @@ function updateScore(cnt)
 {
     document.getElementById("score").innerHTML = `SCORE: ${cnt}`;
 }
-//settings
+
+
+//settings & such
 let mute = false;
 function muteToggle()
 {
@@ -229,9 +234,56 @@ function modeToggle()
         document.getElementById("loading").style.fontSize = "80px";
     }
 }    
-//settings
+
+let drawer = true;
+function toggleDrawer()
+{
+    drawer = !drawer;
+    if(drawer)
+    {
+        document.getElementById('handleIcn').src = "./icons/arrowLeft.png" ;
+        document.getElementById("drawer").style.translate = "0px";
+        document.getElementById("handle").style.left = "max(23vw,430px)";
+    }
+    else
+    {
+        document.getElementById('handleIcn').src = "./icons/arrowRight.png";
+        document.getElementById("drawer").style.translate = "-800px";
+        document.getElementById("handle").style.left = "-20px"
+    }
+}
+
+let started = false;
+function startUp()
+{
+    started = true;
+    currentWord = getRandomWord();
+    document.getElementById("content0").innerHTML = currentWord;
+    document.getElementById("content1").innerHTML = getRandomWord();
+    document.getElementById("loading").style.translate = "0 3000px";
+    document.getElementById("drawer").innerHTML = wordMode ? wmDesc : lmDesc;
+    if(isMobile())
+    {
+        document.getElementById("space").style.left = "40px";  
+        document.getElementById("keybinds").style.display = "none";
+        document.getElementById("muteDiv").style.display = "none";
+        document.getElementById("settings").style.top = "120px";  
+        document.getElementById("score").style.fontSize = "30px";  
+        mute = true;
+    }
+}
+
+
+//start screen
+document.onmousedown = function(e){
+    if(!started)
+        startUp();
+}
+
 
 //letters and word translations
+let currentWord = "";
+
 function shake()
 {
     let output = document.getElementById("output")
@@ -254,8 +306,6 @@ function getRandomWord()
         word = getRandomWord()
     return word;
 }
-
-let currentWord = "";
 
 function translate(letter)
 {
@@ -281,7 +331,6 @@ function computeHint(word)
     document.getElementById("hint").innerHTML = hint;
 }
     
-
 function swapWords()
 {
     let con1,con2;
@@ -301,15 +350,18 @@ function swapWords()
     con2.style.display = "block";
     con2.style.top = "200px";
     document.getElementById("hint").style.color = "#ffffff00";
+
     setTimeout(() => {
         con1.style.display = "none";
         con1.style.top = "2200px";
         con1.style.color = "#ffffff"
         con1.innerHTML = getRandomWord();
     }, 100);
+
     setTimeout(() => {
         con1.style.display = "block";
     }, 300);
+
     COUNTER++;
     updateScore(COUNTER);
 }
@@ -323,6 +375,7 @@ function showHint()
 }
 
 
+//wordmode
 function wmVerify()
 {
     if (!wordMode) return;
@@ -388,27 +441,6 @@ function wmVerify()
     
 }
 
-let drawer = true;
-function toggleDrawer()
-{
-    drawer = !drawer;
-    if(drawer)
-    {
-        document.getElementById('handleIcn').src = "./icons/arrowLeft.png" ;
-        document.getElementById("drawer").style.translate = "0px";
-        document.getElementById("handle").style.left = "max(23vw,430px)";
-    }
-    else
-    {
-        document.getElementById('handleIcn').src = "./icons/arrowRight.png";
-        document.getElementById("drawer").style.translate = "-800px";
-        document.getElementById("handle").style.left = "-20px"
-    }
-}
-
-
-
-
 let interval;
 function resetInterval()
 {   
@@ -419,28 +451,12 @@ function resetInterval()
         window.clearInterval(interval);
     }, 2000);    
 }    
-let started = false;
-function startUp()
-{
-    started = true;
-    currentWord = getRandomWord();
-    document.getElementById("content0").innerHTML = currentWord;
-    document.getElementById("content1").innerHTML = getRandomWord();
-    document.getElementById("loading").style.translate = "0 3000px";
-    document.getElementById("drawer").innerHTML = wordMode ? wmDesc : lmDesc;
-    if(isMobile())
-    {
-        document.getElementById("space").style.left = "40px";  
-        document.getElementById("keybinds").style.display = "none";
-        document.getElementById("muteDiv").style.display = "none";
-        document.getElementById("settings").style.top = "120px";  
-        document.getElementById("score").style.fontSize = "30px";  
-        mute = true;
-    }
-}
+
 
 //key handler
 let key;
+let runKeychange=true;
+let dotKey = 'j', dashKey = 'k', spaceKey = 'h';
 
 function checkKeys(){
     if(key == dotKey)
@@ -450,6 +466,7 @@ function checkKeys(){
     if(key == spaceKey)
         document.getElementById("spaceKey").src="./icons/invalidKey.png", spaceKey = ""; 
 }
+
 function waitKey(con) {
     return new Promise((resolve) => {
         document.addEventListener('keydown', onKeyHandler);
@@ -474,7 +491,7 @@ function waitKey(con) {
       
     });
 }
-let runKeychange=true;
+
 async function changeDot()
 {
     if(runKeychange)
@@ -503,6 +520,7 @@ async function changeDot()
         runKeychange = true;
     }
 }
+
 async function changeDash()
 {
     if(runKeychange)
@@ -531,6 +549,7 @@ async function changeDash()
         runKeychange = true;
     }
 }
+
 async function changeSpace()
 {
     if(runKeychange)
@@ -560,7 +579,6 @@ async function changeSpace()
     }
 }
 
-let dotKey = 'j', dashKey = 'k', spaceKey = 'h';
 document.onkeydown = function(e){
     e = e || window;
     var key = e.key;
@@ -577,13 +595,10 @@ document.onkeydown = function(e){
     }
     else
         startUp();
-}    
-document.onmousedown = function(e){
-    if(!started)
-        startUp();
-}
+} 
+  
 
-
+//sound and onscreen buttons
 let dashSnd  = new Audio('dash.wav'), dotSnd  = new Audio('dot.wav');
 dashSnd.volume = 0.7;
 dotSnd.volume = 0.7;
@@ -606,7 +621,6 @@ function dot()
     resetInterval();
 }    
 
-
 function dash()
 {
     
@@ -624,7 +638,6 @@ function dash()
     refreshOutput();
     resetInterval();
 }    
-
 
 function space()
 {

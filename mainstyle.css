@@ -83,8 +83,6 @@ html, body {
     right: 30px;
 }
 
-
-
 #loading {
     z-index: 1;
     background-color: #007acc;
@@ -97,11 +95,13 @@ html, body {
     padding-top: 40vh;
     font-size: 10vh;
 }
+
 #subtext {
    font-size: 3.5vh;
    color: #ffffff;
    animation: pulse 2s infinite;
 }
+
 #output {
     background-color: #007acc;
     appearance: none;
@@ -144,6 +144,7 @@ html, body {
     flex-grow: 1;
     flex-basis: 100%;
 }
+
 #space{
     position: absolute;
     height: 233px;
@@ -310,6 +311,7 @@ button{
     padding-top: 10px;
     width: 60%;
 }
+
 .settings-box #button:hover, .keybinds-box #button:hover{
     scale: 110%;
     transition: 500ms;
@@ -353,6 +355,7 @@ button{
     top:200px;
     left: 86px;
 }
+
 #content1 {
     top:2200px;
     left: 86px;
@@ -369,4 +372,3 @@ body > #hint{
     color:black
     
 }
-

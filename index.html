@@ -13,11 +13,10 @@
         <div id = subtext>Press any key to Start</div>
     </div>
    
-   
     <div id="display"> 
-        <div id="content0">HELLO</div>
-        <div id="content1">WORLD</div>
-        <div id = "hint">.-.-. / .-. / .-.- / -.-.</div>
+        <div id="content0"></div>
+        <div id="content1"></div>
+        <div id = "hint"></div>
         <div id = "keybinds">
             <div class="keybinds-box"><div id="text">Dot</div><button id="button" tabindex="-1" onclick="changeDot();"><img draggable="false" id="dotKey" src="./icons/keys/keyj.png"></button></div>
             <div class="keybinds-box"><div id="text">Dash</div><button id="button" tabindex="-1" onclick="changeDash();"><img draggable="false" id="dashKey" src="./icons/keys/keyk.png"></button></div>
@@ -29,6 +28,7 @@
         <div id = "score">SCORE: 0</div>
         <div id = "output"></div>
         <div id = "drawer"></div>
+        
         <div id = "space">
             <button class = "space" tabindex="-1" onclick="space();"><img draggable="false" src="./icons/space.png"></button>
         </div>
@@ -40,6 +40,7 @@
             <div class = "dash">
                 <button id = "dash" tabindex="-1" onclick=" dash();"><img draggable="false" src="./icons/dash.png"></button>
             </div>
+
             <div id="settings">
                 <div class="settings-box" id = "muteDiv"><div id="text">Sound</div><button id="button" tabindex="-1" onclick="muteToggle();"><img draggable="false" id="mute" src="./icons/sound.png"></button></div>
                 <div class="settings-box"><div id="text">Hints</div><button id="button" tabindex="-1" onclick="hintToggle();"><img draggable="false" id="hints" src="./icons/hints.png"></button></div>

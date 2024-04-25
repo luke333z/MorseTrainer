@@ -281,6 +281,18 @@ document.onmousedown = function(e){
 }
 
 
+
+
+
+
+
+
+
+
+
+//change monospaced font for letter mode
+
+
 //letters and word translations
 let currentWord = "";
 

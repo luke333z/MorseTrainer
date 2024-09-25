@@ -5,6 +5,9 @@
     <title>MorseTrainer</title>
     <link rel="icon" href="./icons/favicon.png">
     <link rel="stylesheet" type="text/css" href="./mainstyle.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cousine:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <script src="funcscript.js"></script>
 </head>
 
@@ -20,8 +23,9 @@
         <div id = "keybinds">
             <div class="keybinds-box"><div id="text">Dot</div><button id="button" tabindex="-1" onclick="changeDot();"><img draggable="false" id="dotKey" src="./icons/keys/keyj.png"></button></div>
             <div class="keybinds-box"><div id="text">Dash</div><button id="button" tabindex="-1" onclick="changeDash();"><img draggable="false" id="dashKey" src="./icons/keys/keyk.png"></button></div>
-            <div class="keybinds-box"><div id="text">Space</div><button id="button" tabindex="-1" onclick="changeSpace();"><img draggable="false" id="spaceKey" src="./icons/keys/keyh.png"></button></div>
+            <div class="keybinds-box" id="spaceBind"><div id="text">Space</div><button id="button" tabindex="-1" onclick="changeSpace();"><img draggable="false" id="spaceKey" src="./icons/keys/keyh.png"></button></div>
         </div>
+        <div id = "circle"></div>
     </div>
 
     <div id = "hotbar">
@@ -32,7 +36,7 @@
         <div id = "space">
             <button class = "space" tabindex="-1" onclick="space();"><img draggable="false" src="./icons/space.png"></button>
         </div>
-        <button id = "handle" onclick="toggleDrawer();" tabindex="-1"><img draggable="false" id="handleIcn" src="./icons/arrowLeft.png"></button>
+        <button id = "handle" onclick="toggleDrawer();" tabindex="-1"><img draggable="false" id="handleIcn" src="./icons/arrowRight.png"></button>
         <div id = "button-box">
             <div class = "dot">
                 <button id = "dot" tabindex="-1" onclick="dot();"><img draggable="false" src="./icons/dot.png"></button>

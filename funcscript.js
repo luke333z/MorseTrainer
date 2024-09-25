@@ -224,16 +224,21 @@ function modeToggle()
     wordMode = !wordMode;
     wordMode ?  document.getElementById('mode').src = "./icons/wordmode.png" :  document.getElementById('mode').src = "./icons/lettermode.png";
     document.getElementById("drawer").innerHTML = wordMode ? wmDesc : lmDesc;
+    document.getElementById("space").style.display = wordMode ? "inherit" : "none";
+    document.getElementById("spaceBind").style.display = wordMode ? "inherit" : "none";
+    swapWords();
+    updateScore(0);
     if(!wordMode)
     {
-        blockInput = true;
-        document.getElementById("loading").style.backgroundColor = "#ff0000";
-        document.getElementById("loading").innerHTML = "WORK IN PROGRESS PLEASE REFRESH PAGE";
-        document.getElementById("loading").style.translate = "0 0";
-        if(isMobile())
-        document.getElementById("loading").style.fontSize = "80px";
+        
     }
-}    
+}   
+let circlePos = 68;
+function moveCircle()
+{
+    circlePos+=112;
+    document.getElementById("circle").style.left = `${circlePos}px`;
+}
 
 let drawer = true;
 function toggleDrawer()
@@ -241,15 +246,15 @@ function toggleDrawer()
     drawer = !drawer;
     if(drawer)
     {
-        document.getElementById('handleIcn').src = "./icons/arrowLeft.png" ;
+        document.getElementById('handleIcn').src = "./icons/arrowRight.png" ;
         document.getElementById("drawer").style.translate = "0px";
-        document.getElementById("handle").style.left = "max(23vw,430px)";
+        document.getElementById("handle").style.right = "max(23vw,430px)";
     }
     else
     {
-        document.getElementById('handleIcn').src = "./icons/arrowRight.png";
-        document.getElementById("drawer").style.translate = "-800px";
-        document.getElementById("handle").style.left = "-20px"
+        document.getElementById('handleIcn').src = "./icons/arrowLeft.png";
+        document.getElementById("drawer").style.translate = "800px";
+        document.getElementById("handle").style.right = "-20px"
     }
 }
 
@@ -604,6 +609,8 @@ document.onkeydown = function(e){
             space();
         else if(key== "[") // c
             swapWords();
+        else if(key== "]") // c
+            moveCircle();
     }
     else
         startUp();

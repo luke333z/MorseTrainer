@@ -17,8 +17,9 @@
   }
 html, body {
     margin: 0; height: 100%; 
-    font-family: "Poppins","Helvetica","Arial",sans-serif;
+    font-family: "Cousine", monospace;
     font-weight: 800;
+    font-style: normal;
     overflow:hidden;
     display: flex;
     position: absolute;
@@ -145,8 +146,21 @@ html, body {
     flex-basis: 100%;
 }
 
+#circle {
+    position: absolute;
+    background-color: #00558e37;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    left: 68px;
+    top: 200px;
+    z-index: -0.5;
+    transition: 300ms ;
+}
+
 #space{
     position: absolute;
+    display:inherit;
     height: 233px;
     width: 100px;
     bottom: 25px;
@@ -232,7 +246,8 @@ button{
 #drawer {
     width: 20vw;
     height: 310px;
-    top:-400px;
+    top:-350px;
+    right: 10px;
     position:absolute;
     color:#ffffff;
     font-size: 18px;
@@ -244,15 +259,16 @@ button{
 
 #handle {
     width: 50px;
-    background-color: #8787878d;
+    background-color: #87878715;
     height: 210px;
-    top:-465px;
+    top:-435px;
     position:absolute;
-    left:max(23vw,430px);
+    right:max(23vw,430px);
     margin-top: 120px;
     border-radius: 10px;
     transition: 500ms;
-    border: none;
+    border: none;   
+    
 }
 
 #handleIcn {
@@ -261,10 +277,12 @@ button{
     align-items: center;
     top:80px;
     left:0px;
+    
 }
 
 #handle:hover{
     scale:105%;
+    background-color: #878787a6;
 }
 
 #handle:active{
@@ -342,6 +360,7 @@ button{
     position:absolute;
     letter-spacing: 50px;
     transition: 500ms;
+    z-index: 1;
 }
 
 #display {
